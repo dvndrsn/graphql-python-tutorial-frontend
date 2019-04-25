@@ -14,7 +14,9 @@ const STORIES_QUERY = gql`
           id
           title
           publishedYear
-          authorName(display: FIRST_LAST)
+          author {
+            fullName(display: FIRST_LAST)
+          }
         }
       }
     }
@@ -34,7 +36,7 @@ const Stories = () => {
               <ListItem key={story.id}>
                 <ListItemText
                   primary={`${story.title} (${story.publishedYear})`}
-                  secondary={story.authorName}
+                  secondary={story.author.fullName}
                 />
               </ListItem>
             ))}

@@ -14,6 +14,15 @@ const AUTHORS_QUERY = gql`
           id
           fullName(display: FIRST_LAST)
           twitterAccount
+          stories {
+            edges {
+              node {
+                id
+                title
+                publishedYear
+              }
+            }
+          }
         }
       }
     }
@@ -33,6 +42,12 @@ const Authors = () => {
               <ListItem key={author.id}>
                 <ListItemText
                   primary={`${author.fullName} (@${author.twitterAccount})`}
+                  secondary={author.stories.edges
+                    .map(
+                      ({ node: story }) =>
+                        `${story.title} (${story.publishedYear})`
+                    )
+                    .join(", ")}
                 />
               </ListItem>
             ))}
