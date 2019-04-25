@@ -9,10 +9,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 const STORIES_QUERY = gql`
   query storiesWithAuthor {
     stories {
-      id
-      title
-      publishedYear
-      authorName(display: FIRST_LAST)
+      edges {
+        node {
+          id
+          title
+          publishedYear
+          authorName(display: FIRST_LAST)
+        }
+      }
     }
   }
 `;
@@ -26,7 +30,7 @@ const Stories = () => {
 
         return (
           <List dense button>
-            {data.stories.map(story => (
+            {data.stories.edges.map(({ node: story }) => (
               <ListItem key={story.id}>
                 <ListItemText
                   primary={`${story.title} (${story.publishedYear})`}
