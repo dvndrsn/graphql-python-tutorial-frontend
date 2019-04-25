@@ -11,6 +11,7 @@ const STORIES_QUERY = gql`
     stories {
       id
       title
+      publishedYear
       authorName(display: FIRST_LAST)
     }
   }
@@ -28,7 +29,7 @@ const Stories = () => {
             {data.stories.map(story => (
               <ListItem key={story.id}>
                 <ListItemText
-                  primary={`${story.title}`}
+                  primary={`${story.title} (${story.publishedYear})`}
                   secondary={story.authorName}
                 />
               </ListItem>
