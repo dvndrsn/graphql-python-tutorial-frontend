@@ -6,6 +6,7 @@ import AppBar from "./AppBar";
 import SideDrawer from "./SideDrawer";
 import Content from "./Content";
 import Stories from "./Stories";
+import Authors from "./Authors";
 
 const CyoaApp = () => (
   <div style={{ display: "flex" }}>
@@ -13,6 +14,7 @@ const CyoaApp = () => (
     <SideDrawer />
     <Content>
       <Route path="/stories" component={Stories} />
+      <Route path="/authors" component={Authors} />
     </Content>
   </div>
 );

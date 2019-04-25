@@ -42,6 +42,11 @@ const SideDrawer = ({ classes }) => (
           <ListItemText primary="Stories" />
         </ListItem>
       </Link>
+      <Link to="/authors">
+        <ListItem button>
+          <ListItemText primary="Authors" />
+        </ListItem>
+      </Link>
     </List>
   </Drawer>
 );
