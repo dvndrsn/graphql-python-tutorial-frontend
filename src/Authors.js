@@ -6,6 +6,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import AddStoryButton from "./AddStoryButton";
+
 const AUTHORS_QUERY = gql`
   query authorsWithStories {
     authors {
@@ -49,6 +51,7 @@ const Authors = () => {
                     )
                     .join(", ")}
                 />
+                <AddStoryButton authorId={author.id} />
               </ListItem>
             ))}
           </List>

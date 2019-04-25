@@ -6,6 +6,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import DeleteStoryButton from "./DeleteStoryButton";
+
 const STORIES_QUERY = gql`
   query storiesWithAuthor {
     stories {
@@ -38,6 +40,7 @@ const Stories = () => {
                   primary={`${story.title} (${story.publishedYear})`}
                   secondary={story.author.fullName}
                 />
+                <DeleteStoryButton storyId={story.id} />
               </ListItem>
             ))}
           </List>
